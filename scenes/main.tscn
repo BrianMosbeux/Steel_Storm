@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://8k3dveuwrcqv"]
+[gd_scene load_steps=6 format=3 uid="uid://8k3dveuwrcqv"]
 
 [ext_resource type="Texture2D" uid="uid://dn5iiv23s65w8" path="res://assets/sprites/tankBody_green_outline.png" id="1_jm0ap"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_vm1xh"]
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="3_ixknv"]
+[ext_resource type="Texture2D" uid="uid://tqwiyi42r2ws" path="res://assets/sprites/tankGreen_barrel2_outline.png" id="4_8kmfv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynfwj"]
 size = Vector2(40, 42)
@@ -11,9 +13,23 @@ size = Vector2(40, 42)
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_vm1xh")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="TankBodySprite" type="Sprite2D" parent="Player"]
 rotation = -1.5708
 texture = ExtResource("1_jm0ap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_ynfwj")
+
+[node name="Weapon" type="Node2D" parent="Player"]
+script = ExtResource("3_ixknv")
+
+[node name="TankBarrel2Sprite" type="Sprite2D" parent="Player/Weapon"]
+position = Vector2(12, -2.79753e-06)
+rotation = -1.5708
+texture = ExtResource("4_8kmfv")
+
+[node name="EndOfGun" type="Marker2D" parent="Player/Weapon"]
+position = Vector2(32, 0)
+
+[node name="GunDirection" type="Marker2D" parent="Player/Weapon"]
+position = Vector2(40, 0)
