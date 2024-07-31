@@ -18,3 +18,5 @@ texture = ExtResource("2_v3pr5")
 shape = SubResource("RectangleShape2D_ynfwj")
 
 [node name="Weapon" parent="." instance=ExtResource("3_87jxi")]
+
+[connection signal="weapon_fired" from="Weapon" to="." method="_on_weapon_weapon_fired"]

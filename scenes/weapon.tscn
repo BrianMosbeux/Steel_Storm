@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8bndbs0iyr2s"]
+[gd_scene load_steps=4 format=3 uid="uid://b8bndbs0iyr2s"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_esokv"]
 [ext_resource type="Texture2D" uid="uid://tqwiyi42r2ws" path="res://assets/sprites/tankGreen_barrel2_outline.png" id="2_rmbtq"]
+[ext_resource type="PackedScene" uid="uid://b3fe3kwa7sxcl" path="res://scenes/bullet.tscn" id="2_spg4l"]
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_esokv")
+BulletScene = ExtResource("2_spg4l")
 
 [node name="TankBarrel2Sprite" type="Sprite2D" parent="."]
 position = Vector2(12, -2.79753e-06)
@@ -16,3 +18,6 @@ position = Vector2(32, 0)
 
 [node name="GunDirection" type="Marker2D" parent="."]
 position = Vector2(40, 0)
+
+[node name="WeaponCooldown" type="Timer" parent="."]
+one_shot = true

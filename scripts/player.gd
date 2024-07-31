@@ -2,6 +2,11 @@ extends CharacterBody2D
 class_name Player
 
 
+signal player_shot(bullet, bullet_start_location, bullet_dir)
+
+@onready var weapon = $Weapon
+
+
 var wheel_base: int = 70
 var engine_power: int = 400
 var braking: int = -400
@@ -11,9 +16,6 @@ var drag: float = -0.0015
 var steering_angle: float = 2.0
 var steer_angle: float
 var acceleration: Vector2
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
@@ -26,7 +28,7 @@ func _physics_process(delta):
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("shoot"):
-		shoot()
+		weapon.shoot()
 
 func get_player_move_input():
 	turn = int(Input.is_action_pressed("steer_right")) - int(Input.is_action_pressed("steer_left"))
@@ -56,5 +58,6 @@ func calculate_direction():
 	if d <= 0:
 		velocity = -new_heading * velocity.length()
 
-func shoot():
-	print("shoot")
+
+func _on_weapon_weapon_fired(bullet, bullet_start_postion, bullet_direction):
+	player_shot.emit(bullet, bullet_start_postion, bullet_direction)
