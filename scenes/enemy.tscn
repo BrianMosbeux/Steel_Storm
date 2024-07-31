@@ -1,19 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://e417i38tw8xv"]
+[gd_scene load_steps=8 format=3 uid="uid://e417i38tw8xv"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_du53m"]
-[ext_resource type="Texture2D" uid="uid://dn5iiv23s65w8" path="res://assets/sprites/tankBody_green_outline.png" id="2_nkcxx"]
+[ext_resource type="Texture2D" uid="uid://2v36vgk88376" path="res://assets/sprites/red_tank/tankBody_red_outline.png" id="2_yoj3t"]
 [ext_resource type="PackedScene" uid="uid://b8bndbs0iyr2s" path="res://scenes/weapon.tscn" id="3_e8nf8"]
 [ext_resource type="PackedScene" uid="uid://bgq8mwc07yl6s" path="res://scenes/health.tscn" id="4_8hnmu"]
+[ext_resource type="Script" path="res://scripts/ai.gd" id="5_kqws3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynfwj"]
 size = Vector2(40, 42)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dyuqg"]
+radius = 300.0
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_du53m")
 
 [node name="TankBodySprite" type="Sprite2D" parent="."]
 rotation = -1.5708
-texture = ExtResource("2_nkcxx")
+texture = ExtResource("2_yoj3t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ynfwj")
@@ -22,3 +26,11 @@ shape = SubResource("RectangleShape2D_ynfwj")
 script = null
 
 [node name="Health" parent="." instance=ExtResource("4_8hnmu")]
+
+[node name="AI" type="Node2D" parent="."]
+script = ExtResource("5_kqws3")
+
+[node name="DetectionZone" type="Area2D" parent="AI"]
+
+[node name="DetectionShape" type="CollisionShape2D" parent="AI/DetectionZone"]
+shape = SubResource("CircleShape2D_dyuqg")

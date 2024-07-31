@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://b8bndbs0iyr2s"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_esokv"]
-[ext_resource type="Texture2D" uid="uid://tqwiyi42r2ws" path="res://assets/sprites/tankGreen_barrel2_outline.png" id="2_rmbtq"]
 [ext_resource type="PackedScene" uid="uid://b3fe3kwa7sxcl" path="res://scenes/bullet.tscn" id="2_spg4l"]
-[ext_resource type="Texture2D" uid="uid://vjq8gj2xt0nb" path="res://assets/sprites/shotLarge.png" id="4_4nf3c"]
+[ext_resource type="Texture2D" uid="uid://tqwiyi42r2ws" path="res://assets/sprites/green_tank/tankGreen_barrel2_outline.png" id="3_6sfh2"]
+[ext_resource type="Texture2D" uid="uid://vjq8gj2xt0nb" path="res://assets/sprites/muzzle_flash/shotLarge.png" id="4_sfx60"]
 
 [sub_resource type="Animation" id="Animation_kkxlb"]
 resource_name = "muzzle_flash"
@@ -46,7 +46,7 @@ BulletScene = ExtResource("2_spg4l")
 [node name="TankBarrel2Sprite" type="Sprite2D" parent="."]
 position = Vector2(12, -2.79753e-06)
 rotation = -1.5708
-texture = ExtResource("2_rmbtq")
+texture = ExtResource("3_6sfh2")
 
 [node name="EndOfGun" type="Marker2D" parent="."]
 position = Vector2(32, 0)
@@ -61,7 +61,7 @@ one_shot = true
 visible = false
 position = Vector2(45, 0)
 rotation = -1.5708
-texture = ExtResource("4_4nf3c")
+texture = ExtResource("4_sfx60")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

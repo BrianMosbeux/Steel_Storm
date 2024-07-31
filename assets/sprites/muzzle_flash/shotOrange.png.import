@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://01lytpjerjyo"
-path="res://.godot/imported/bulletGreen3_outline.png-704b01c36812185e39dfecb01477973c.ctex"
+uid="uid://ci15itc27sa2t"
+path="res://.godot/imported/shotOrange.png-e6fa6889762636c891a27f3a24df8dfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bulletGreen3_outline.png"
-dest_files=["res://.godot/imported/bulletGreen3_outline.png-704b01c36812185e39dfecb01477973c.ctex"]
+source_file="res://assets/sprites/muzzle_flash/shotOrange.png"
+dest_files=["res://.godot/imported/shotOrange.png-e6fa6889762636c891a27f3a24df8dfa.ctex"]
 
 [params]
 
