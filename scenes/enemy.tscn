@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://e417i38tw8xv"]
+[gd_scene load_steps=6 format=3 uid="uid://e417i38tw8xv"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_du53m"]
 [ext_resource type="Texture2D" uid="uid://dn5iiv23s65w8" path="res://assets/sprites/tankBody_green_outline.png" id="2_nkcxx"]
 [ext_resource type="PackedScene" uid="uid://b8bndbs0iyr2s" path="res://scenes/weapon.tscn" id="3_e8nf8"]
+[ext_resource type="PackedScene" uid="uid://bgq8mwc07yl6s" path="res://scenes/health.tscn" id="4_8hnmu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynfwj"]
 size = Vector2(40, 42)
@@ -18,5 +19,6 @@ texture = ExtResource("2_nkcxx")
 shape = SubResource("RectangleShape2D_ynfwj")
 
 [node name="Weapon" parent="." instance=ExtResource("3_e8nf8")]
+script = null
 
-[connection signal="weapon_fired" from="Weapon" to="." method="_on_weapon_weapon_fired"]
+[node name="Health" parent="." instance=ExtResource("4_8hnmu")]

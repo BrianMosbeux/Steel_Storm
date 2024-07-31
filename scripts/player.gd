@@ -4,7 +4,9 @@ class_name Player
 
 signal player_shot(bullet, bullet_start_location, bullet_dir)
 
+
 @onready var weapon = $Weapon
+@onready var health = $Health
 
 
 var wheel_base: int = 70
@@ -57,7 +59,11 @@ func calculate_direction():
 		velocity = new_heading * velocity.length()
 	if d <= 0:
 		velocity = -new_heading * velocity.length()
-
+		
+func handle_hit():
+	health.health -= 50
+	if health.health <= 0:
+		print("YOU DIED")
 
 func _on_weapon_weapon_fired(bullet, bullet_start_postion, bullet_direction):
 	player_shot.emit(bullet, bullet_start_postion, bullet_direction)
