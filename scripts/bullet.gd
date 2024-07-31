@@ -12,12 +12,13 @@ func _process(delta):
 		var velocity = direction * speed
 		global_position += velocity * delta 
 
-
 func set_direction(dir: Vector2):
 	direction = dir
 	rotation += dir.angle()
 
-
-
 func _on_bullet_timer_timeout():
 	queue_free()
+
+func _on_body_entered(body):
+	if body.has_method("handle_hit"):
+		body.handle_hit()
