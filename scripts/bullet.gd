@@ -16,3 +16,8 @@ func _process(delta):
 func set_direction(dir: Vector2):
 	direction = dir
 	rotation += dir.angle()
+
+
+
+func _on_bullet_timer_timeout():
+	queue_free()

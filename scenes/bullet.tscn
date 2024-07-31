@@ -13,5 +13,12 @@ script = ExtResource("1_6eju1")
 rotation = 1.5708
 texture = ExtResource("1_bkj5e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BulletShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ges3b")
+
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]

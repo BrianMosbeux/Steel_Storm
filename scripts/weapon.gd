@@ -37,4 +37,3 @@ func shoot():
 		var bullet_instance = BulletScene.instantiate()
 		var bullet_direction = (gun_direction.global_position - end_of_gun.global_position).normalized()
 		weapon_fired.emit(bullet_instance, end_of_gun.global_position, bullet_direction)
-		print("shoot")
