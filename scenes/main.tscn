@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://8k3dveuwrcqv"]
+[gd_scene load_steps=4 format=3 uid="uid://8k3dveuwrcqv"]
 
 [ext_resource type="Texture2D" uid="uid://dn5iiv23s65w8" path="res://assets/sprites/tankBody_green_outline.png" id="1_jm0ap"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_vm1xh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynfwj"]
 size = Vector2(40, 42)
@@ -8,12 +9,11 @@ size = Vector2(40, 42)
 [node name="Main" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_vm1xh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture_filter = 1
 rotation = -1.5708
 texture = ExtResource("1_jm0ap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-visible = false
 shape = SubResource("RectangleShape2D_ynfwj")
