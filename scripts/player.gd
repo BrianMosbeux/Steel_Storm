@@ -23,9 +23,10 @@ func _physics_process(delta):
 	calculate_direction()
 	velocity += acceleration * delta
 	move_and_slide()
-
-	move_and_slide()
-
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("shoot"):
+		shoot()
 
 func get_player_move_input():
 	turn = int(Input.is_action_pressed("steer_right")) - int(Input.is_action_pressed("steer_left"))
@@ -54,3 +55,6 @@ func calculate_direction():
 		velocity = new_heading * velocity.length()
 	if d <= 0:
 		velocity = -new_heading * velocity.length()
+
+func shoot():
+	print("shoot")
