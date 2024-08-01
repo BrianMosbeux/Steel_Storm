@@ -25,14 +25,13 @@ var enemy: Enemy = null
 
 
 func _process(delta):
+	print(player, weapon)
 	match current_state:
 		State.PATROL:
 			pass
 		State.ENGAGE:
 			if player and weapon:
-				print("GEKL")
 				var direction = player.global_position - enemy.global_position
-				print(direction)
 				weapon.rotation = rotate_toward(weapon.global_rotation, direction.angle(), 2 * delta)
 				#var angle = (player.global_position - global_position).angle()
 				#weapon.rotation = angle
@@ -56,5 +55,6 @@ func _on_detection_zone_body_exited(body):
 	if body.is_in_group("players"):
 		current_state = State.PATROL
 		player = null
+		print("PATROLING")
 
 

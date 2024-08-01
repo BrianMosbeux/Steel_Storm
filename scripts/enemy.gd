@@ -7,7 +7,7 @@ class_name Enemy
 @onready var weapon = $Weapon
 
 
-func ready():
+func _ready():
 	ai.initialize(self, weapon)
 
 func _physics_process(delta):
