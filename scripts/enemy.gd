@@ -6,6 +6,7 @@ class_name Enemy
 @onready var ai = $AI
 @onready var weapon = $Weapon
 
+var speed = 100
 
 func _ready():
 	ai.initialize(self, weapon)
