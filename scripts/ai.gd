@@ -30,9 +30,9 @@ func _process(delta):
 			pass
 		State.ENGAGE:
 			if player and weapon:
-				var direction = player.global_position - enemy.global_position
-				weapon.rotation = rotate_toward(weapon.global_rotation, direction.angle(), 2 * delta)
-				if weapon.rotation == direction.angle():
+				var angle_to_player = (player.global_position - enemy.global_position).angle()
+				weapon.rotation = rotate_toward(weapon.global_rotation, angle_to_player, 2 * delta)
+				if abs(weapon.rotation - angle_to_player) < 0.1:
 					weapon.shoot()
 				#var angle = (player.global_position - global_position).angle()
 				#weapon.rotation = angle
