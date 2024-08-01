@@ -21,5 +21,3 @@ shape = SubResource("RectangleShape2D_ynfwj")
 [node name="Weapon" parent="." instance=ExtResource("3_87jxi")]
 
 [node name="Health" parent="." instance=ExtResource("4_ilv1t")]
-
-[connection signal="weapon_fired" from="Weapon" to="." method="_on_weapon_weapon_fired"]

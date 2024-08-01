@@ -16,6 +16,7 @@ func shoot():
 	if weapon_cooldown.is_stopped():
 		var bullet_instance = BulletScene.instantiate()
 		var bullet_direction = (gun_direction.global_position - end_of_gun.global_position).normalized()
-		weapon_fired.emit(bullet_instance, end_of_gun.global_position, bullet_direction)
+		GlobalSignals.bullet_fired.emit(bullet_instance, end_of_gun.global_position, bullet_direction)
+		#weapon_fired.emit(bullet_instance, end_of_gun.global_position, bullet_direction)
 		weapon_cooldown.start()
 		animation_player.play("muzzle_flash")

@@ -16,5 +16,3 @@ position = Vector2(304, 136)
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("2_5x1xw")
-
-[connection signal="player_shot" from="Player" to="." method="_on_player_player_shot"]
