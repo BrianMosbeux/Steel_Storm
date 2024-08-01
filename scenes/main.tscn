@@ -9,9 +9,10 @@
 script = ExtResource("1_qjmy5")
 
 [node name="Player" parent="." instance=ExtResource("1_2efj0")]
+position = Vector2(88, 88)
 
 [node name="Enemy" parent="." instance=ExtResource("3_eeaeo")]
-position = Vector2(200, 0)
+position = Vector2(304, 136)
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("2_5x1xw")

@@ -3,12 +3,12 @@ class_name Enemy
 
 
 @onready var health = $Health
-@onready var weapon = $Weapon
 @onready var ai = $AI
+@onready var weapon = $Weapon
 
 
 func ready():
-	ai.set_weapon(weapon)
+	ai.initialize(self, weapon)
 
 func _physics_process(delta):
 	pass

@@ -21,6 +21,7 @@ var current_state: int = State.PATROL:
 		state_changed.emit(current_state)
 var player: Player = null
 var weapon: Weapon = null
+var enemy: Enemy = null
 
 
 func _process(delta):
@@ -29,22 +30,26 @@ func _process(delta):
 			pass
 		State.ENGAGE:
 			if player and weapon:
-				var direction = player.global_position - global_position
+				print("GEKL")
+				var direction = player.global_position - enemy.global_position
 				print(direction)
-				weapon.global_rotation = rotate_toward(weapon.global_rotation, direction.angle(), 2 * delta)
+				weapon.rotation = rotate_toward(weapon.global_rotation, direction.angle(), 2 * delta)
 				#var angle = (player.global_position - global_position).angle()
 				#weapon.rotation = angle
 				#enemy.rotation = angle
 				#enemy.velocity = Vector2(enemy.speed, 0.0).rotated(angle)
 				
-func set_weapon(weapon: Weapon):
+func initialize(enemy: Enemy, weapon: Weapon):
+	self.enemy = enemy
 	self.weapon = weapon
+	print(enemy, weapon)
 	
 
 func _on_detection_zone_body_entered(body):
 	if body.is_in_group("players"):
 		current_state = State.ENGAGE
 		player = body
+		print(weapon)
 		print("ENGAGING")
 
 func _on_detection_zone_body_exited(body):
