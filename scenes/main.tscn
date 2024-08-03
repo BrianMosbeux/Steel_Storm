@@ -27,8 +27,5 @@ position = Vector2(80, 336)
 [node name="Ally2" parent="." instance=ExtResource("4_4wfy7")]
 position = Vector2(168, 32)
 
-[node name="Ally3" parent="." instance=ExtResource("4_4wfy7")]
-position = Vector2(272, 120)
-
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("2_5x1xw")
