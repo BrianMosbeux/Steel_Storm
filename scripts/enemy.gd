@@ -11,12 +11,13 @@ class_name Enemy
 var speed = 100
 
 func _ready():
-	ai.initialize(self, weapon)
+	ai.initialize(self, weapon, team.team)
 
 func _physics_process(delta):
 	pass
 	
-
+func get_team():
+	return team.team
 
 func handle_hit():
 	health.health -= 20

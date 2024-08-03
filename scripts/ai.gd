@@ -64,9 +64,10 @@ func _physics_process(delta):
 				#npc.rotation = angle
 				#npc.velocity = Vector2(npc.speed, 0.0).rotated(angle)
 				
-func initialize(npc: CharacterBody2D, weapon: Weapon):
+func initialize(npc: CharacterBody2D, weapon: Weapon, team: int):
 	self.npc = npc
 	self.weapon = weapon	
+	self.team = team
 
 func _on_detection_zone_body_entered(body):
 	if body.is_in_group("players"):

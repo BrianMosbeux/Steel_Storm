@@ -77,3 +77,5 @@ func handle_hit():
 	if health.health <= 0:
 		print("YOU DIED")
 
+func get_team():
+	return team.team
