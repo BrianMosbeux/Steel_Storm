@@ -29,12 +29,7 @@ func _physics_process(delta):
 	
 	get_player_aim_input()
 	rotate_player_weapon(delta)
-	move_and_slide()
-	
-
-func _process(delta):
-	pass
-	
+	move_and_slide()	
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("shoot"):
