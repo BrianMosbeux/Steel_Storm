@@ -22,8 +22,6 @@ var current_state: State = -1:
 			origin = global_position
 			patrol_timer.start()
 			patrol_location_reached = true
-		else:
-			print("no state detected")
 		current_state = new_state
 		state_changed.emit(current_state)
 var target: CharacterBody2D = null
