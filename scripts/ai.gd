@@ -40,7 +40,7 @@ var enemy_velocity: Vector2 = Vector2.ZERO
 func _ready():
 	current_state = State.PATROL
 
-func _process(delta):
+func _physics_process(delta):
 	match current_state:
 		State.PATROL:
 			if not patrol_location_reached:
