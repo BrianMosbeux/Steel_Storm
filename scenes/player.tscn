@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dn5iiv23s65w8" path="res://assets/sprites/green_tank/tankBody_green_outline.png" id="2_xigpi"]
 [ext_resource type="PackedScene" uid="uid://b8bndbs0iyr2s" path="res://scenes/weapon.tscn" id="3_87jxi"]
 [ext_resource type="PackedScene" uid="uid://bgq8mwc07yl6s" path="res://scenes/health.tscn" id="4_ilv1t"]
-[ext_resource type="Script" path="res://scripts/team.gd" id="5_58cjy"]
+[ext_resource type="PackedScene" uid="uid://hcjwhwueve55" path="res://scenes/team.tscn" id="5_ebwkj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynfwj"]
 size = Vector2(40, 42)
@@ -23,5 +23,4 @@ shape = SubResource("RectangleShape2D_ynfwj")
 
 [node name="Health" parent="." instance=ExtResource("4_ilv1t")]
 
-[node name="Team" type="Node2D" parent="."]
-script = ExtResource("5_58cjy")
+[node name="Team" parent="." instance=ExtResource("5_ebwkj")]
