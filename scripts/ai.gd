@@ -26,7 +26,7 @@ var current_state: int = -1:
 			print("no state detected")
 		current_state = new_state
 		state_changed.emit(current_state)
-var player: Player = null
+var target: CharacterBody2D = null
 var weapon: Weapon = null
 var npc: CharacterBody2D = null
 
@@ -54,12 +54,12 @@ func _physics_process(delta):
 					npc.velocity = Vector2.ZERO
 					patrol_timer.start()
 		State.ENGAGE:
-			if player and weapon:
-				var angle_to_player = (player.global_position - npc.global_position).angle()
-				weapon.global_rotation = rotate_toward(weapon.global_rotation, angle_to_player, 2 * delta)
-				if abs(weapon.global_rotation - angle_to_player) < 0.1:
+			if target and weapon:
+				var angle_to_target = (target.global_position - npc.global_position).angle()
+				weapon.global_rotation = rotate_toward(weapon.global_rotation, angle_to_target, 2 * delta)
+				if abs(weapon.global_rotation - angle_to_target) < 0.1:
 					weapon.shoot()
-				#var angle = (player.global_position - global_position).angle()
+				#var angle = (target.global_position - global_position).angle()
 				#weapon.rotation = angle
 				#npc.rotation = angle
 				#npc.velocity = Vector2(npc.speed, 0.0).rotated(angle)
@@ -71,12 +71,12 @@ func initialize(npc: Enemy, weapon: Weapon):
 func _on_detection_zone_body_entered(body):
 	if body.is_in_group("players"):
 		current_state = State.ENGAGE
-		player = body
+		target = body
 
 func _on_detection_zone_body_exited(body):
 	if body.is_in_group("players"):
 		current_state = State.PATROL
-		player = null
+		target = null
 
 
 
