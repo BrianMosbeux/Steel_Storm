@@ -14,7 +14,7 @@ enum State {
 @onready var patrol_timer = $PatrolTimer
 
 
-var current_state: int = -1:
+var current_state: State = -1:
 	set(new_state):
 		if new_state == current_state:
 			return
@@ -64,7 +64,7 @@ func _physics_process(delta):
 				#npc.rotation = angle
 				#npc.velocity = Vector2(npc.speed, 0.0).rotated(angle)
 				
-func initialize(npc: Enemy, weapon: Weapon):
+func initialize(npc: CharacterBody2D, weapon: Weapon):
 	self.npc = npc
 	self.weapon = weapon	
 
