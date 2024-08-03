@@ -84,3 +84,6 @@ func _on_patrol_timer_timeout():
 	var random_y = randi_range(-patrol_range, patrol_range)
 	patrol_location = Vector2(random_x, random_y) + origin
 	patrol_location_reached = false
+
+func _on_weapon_weapon_out_of_ammo():
+	weapon.start_reload()

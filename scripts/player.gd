@@ -32,8 +32,10 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _unhandled_input(event):
-	if event.is_action_pressed("shoot"):
+	if event.is_action_pressed("shoot") and not weapon.animation_player.is_playing():
 		weapon.shoot()
+	elif event.is_action_pressed("reload"):
+		weapon.start_reload()
 
 func get_player_move_input():
 	turn = int(Input.is_action_pressed("steer_right")) - int(Input.is_action_pressed("steer_left"))

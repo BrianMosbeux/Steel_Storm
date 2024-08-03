@@ -42,6 +42,7 @@ one_shot = true
 [node name="Team" parent="." instance=ExtResource("6_pyrhh")]
 team = 1
 
+[connection signal="weapon_out_of_ammo" from="Weapon" to="AI" method="_on_weapon_weapon_out_of_ammo"]
 [connection signal="body_entered" from="AI/DetectionZone" to="AI" method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="AI/DetectionZone" to="AI" method="_on_detection_zone_body_exited"]
 [connection signal="timeout" from="AI/PatrolTimer" to="AI" method="_on_patrol_timer_timeout"]
