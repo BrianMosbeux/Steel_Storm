@@ -5,6 +5,8 @@ class_name Enemy
 @onready var health = $Health
 @onready var ai = $AI
 @onready var weapon = $Weapon
+@onready var team = $Team
+
 
 var speed = 100
 

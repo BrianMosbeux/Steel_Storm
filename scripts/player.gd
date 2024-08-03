@@ -4,7 +4,7 @@ class_name Player
 
 @onready var weapon = $Weapon
 @onready var health = $Health
-
+@onready var team = $Team
 
 var wheel_base: int = 70
 var engine_power: int = 400
@@ -29,7 +29,7 @@ func _physics_process(delta):
 	
 	get_player_aim_input()
 	rotate_player_weapon(delta)
-	move_and_slide()	
+	move_and_slide()
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("shoot"):
