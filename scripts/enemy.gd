@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Enemy
+class_name Ally
 
 
 @onready var health = $Health
