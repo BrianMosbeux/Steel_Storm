@@ -29,6 +29,7 @@ var current_state: State = -1:
 var target: CharacterBody2D = null
 var weapon: Weapon = null
 var npc: CharacterBody2D = null
+var team: int = -1
 
 var origin: Vector2 = Vector2.ZERO
 var patrol_location: Vector2 = Vector2.ZERO
@@ -70,17 +71,14 @@ func initialize(npc: CharacterBody2D, weapon: Weapon, team: int):
 	self.team = team
 
 func _on_detection_zone_body_entered(body):
-	if body.is_in_group("players"):
+	if body.has_method("get_team") and body.get_team() != team:
 		current_state = State.ENGAGE
 		target = body
 
 func _on_detection_zone_body_exited(body):
-	if body.is_in_group("players"):
+	if target and body == target:
 		current_state = State.PATROL
 		target = null
-
-
-
 
 func _on_patrol_timer_timeout():
 	var patrol_range: int = 150
