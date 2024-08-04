@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bviw37lfylmgh"
-path="res://.godot/imported/tankRed_barrel2_outline.png-0a5d005108f51c168cf9019406ebe16c.ctex"
+uid="uid://cxcmfhguu68tb"
+path="res://.godot/imported/crateWood.png-5181004c20040c1c18c55ca9f638da0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/red_tank/tankRed_barrel2_outline.png"
-dest_files=["res://.godot/imported/tankRed_barrel2_outline.png-0a5d005108f51c168cf9019406ebe16c.ctex"]
+source_file="res://assets/sprites/crates/crateWood.png"
+dest_files=["res://.godot/imported/crateWood.png-5181004c20040c1c18c55ca9f638da0f.ctex"]
 
 [params]
 

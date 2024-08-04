@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kiayqblrrqag"
-path="res://.godot/imported/bulletRed1_outline.png-448bd769b9755f540ac50cfceebf466f.ctex"
+uid="uid://dvskp5hwrdjp7"
+path="res://.godot/imported/tankRed_barrel1_outline.png-63bc3191b20ab01af434e0da564a1087.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/red_tank/bulletRed1_outline.png"
-dest_files=["res://.godot/imported/bulletRed1_outline.png-448bd769b9755f540ac50cfceebf466f.ctex"]
+source_file="res://assets/sprites/tank_red/tankRed_barrel1_outline.png"
+dest_files=["res://.godot/imported/tankRed_barrel1_outline.png-63bc3191b20ab01af434e0da564a1087.ctex"]
 
 [params]
 

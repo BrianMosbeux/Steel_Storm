@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_esokv"]
 [ext_resource type="PackedScene" uid="uid://b3fe3kwa7sxcl" path="res://scenes/bullet.tscn" id="2_spg4l"]
-[ext_resource type="Texture2D" uid="uid://tqwiyi42r2ws" path="res://assets/sprites/green_tank/tankGreen_barrel2_outline.png" id="3_6sfh2"]
+[ext_resource type="Texture2D" uid="uid://tqwiyi42r2ws" path="res://assets/sprites/tank_green/tankGreen_barrel2_outline.png" id="3_r6nkd"]
 [ext_resource type="Texture2D" uid="uid://vjq8gj2xt0nb" path="res://assets/sprites/muzzle_flash/shotLarge.png" id="4_sfx60"]
 
 [sub_resource type="Animation" id="Animation_kkxlb"]
@@ -89,7 +89,7 @@ BulletScene = ExtResource("2_spg4l")
 [node name="TankBarrel2Sprite" type="Sprite2D" parent="."]
 position = Vector2(13, -2.79753e-06)
 rotation = -1.5708
-texture = ExtResource("3_6sfh2")
+texture = ExtResource("3_r6nkd")
 
 [node name="EndOfGun" type="Marker2D" parent="."]
 position = Vector2(36, 0)
