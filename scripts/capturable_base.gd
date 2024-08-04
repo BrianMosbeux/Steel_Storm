@@ -15,10 +15,8 @@ var team_to_capture: int = Team.TeamName.NEUTRAL
 @onready var capture_timer = $CaptureTimer
 
 
-
 func _process(delta):
 	get_team_with_majority()
-	
 	
 func _on_body_entered(body):
 	if body.has_method("get_team"):
@@ -28,7 +26,6 @@ func _on_body_entered(body):
 		elif body_team == Team.TeamName.PLAYER:
 			player_unit_count += 1
 		check_base_can_be_captured()
-
 
 func _on_body_exited(body):
 	if body.has_method("get_team"):
@@ -53,7 +50,6 @@ func check_base_can_be_captured():
 		print("New team has majority in base, starting capture clock")
 		team_to_capture = majority_team
 		capture_timer.start()
-		
 
 func get_team_with_majority():
 	if player_unit_count == enemy_unit_count:

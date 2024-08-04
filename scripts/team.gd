@@ -7,5 +7,4 @@ enum TeamName {
 	ENEMY
 }
 
-
 @export var team: TeamName = TeamName.NEUTRAL

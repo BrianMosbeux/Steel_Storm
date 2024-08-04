@@ -10,12 +10,13 @@ class_name Ally
 
 var speed = 100
 
+
 func _ready():
 	ai.initialize(self, weapon, team.team)
 
 func _physics_process(delta):
 	pass
-	
+
 func get_team():
 	return team.team
 

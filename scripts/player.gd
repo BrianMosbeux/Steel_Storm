@@ -52,7 +52,6 @@ func rotate_player_weapon(delta):
 	if aim_dir.length() > dead_zone:
 		var aim_angle: float = aim_dir.angle()
 		weapon.global_rotation = rotate_toward(weapon.global_rotation, aim_angle, 2 * delta)
-		
 
 func apply_friction():
 	if velocity.length() < 5:
