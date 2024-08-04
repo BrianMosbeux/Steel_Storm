@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Ally
+class_name NPC
 
 
 @onready var health = $Health
@@ -13,6 +13,9 @@ var speed = 100
 
 func _ready():
 	ai.initialize(self, weapon, team.team)
+	
+func has_reached_position(location:Vector2):
+	return global_position.distance_to(location) < 5
 
 func get_team():
 	return team.team

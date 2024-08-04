@@ -37,6 +37,8 @@ func assign_next_capturable_base(base_location: Vector2):
 		return
 	for unit in get_children():
 		if unit == team:
-			print("hello")
 			continue
+		var ai = unit.ai
+		ai.next_base = base_location
+		ai.current_state = AI.State.ADVANCE
 	
