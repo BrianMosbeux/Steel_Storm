@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://8k3dveuwrcqv"]
+[gd_scene load_steps=10 format=3 uid="uid://8k3dveuwrcqv"]
 
 [ext_resource type="PackedScene" uid="uid://ccbtfuru36i8s" path="res://scenes/player.tscn" id="1_2efj0"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_qjmy5"]
 [ext_resource type="Script" path="res://scripts/bullet_manager.gd" id="2_5x1xw"]
 [ext_resource type="PackedScene" uid="uid://e417i38tw8xv" path="res://scenes/enemy.tscn" id="3_eeaeo"]
+[ext_resource type="Script" path="res://scripts/capturable_base_manager.gd" id="4_1fhux"]
 [ext_resource type="PackedScene" uid="uid://c70mhmkbqph6e" path="res://scenes/ally.tscn" id="4_4wfy7"]
+[ext_resource type="Script" path="res://scripts/map_ai.gd" id="5_v3uy3"]
 [ext_resource type="PackedScene" uid="uid://dyqmlfrgr5r0d" path="res://scenes/capturable_base.tscn" id="6_nphai"]
+[ext_resource type="PackedScene" uid="uid://hcjwhwueve55" path="res://scenes/team.tscn" id="8_wibdo"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qjmy5")
@@ -13,23 +16,48 @@ script = ExtResource("1_qjmy5")
 [node name="Player" parent="." instance=ExtResource("1_2efj0")]
 position = Vector2(80, 72)
 
-[node name="Enemy" parent="." instance=ExtResource("3_eeaeo")]
-position = Vector2(1008, 264)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_eeaeo")]
-position = Vector2(696, 544)
-
-[node name="Enemy3" parent="." instance=ExtResource("3_eeaeo")]
-position = Vector2(944, 512)
-
-[node name="Ally" parent="." instance=ExtResource("4_4wfy7")]
-position = Vector2(80, 336)
-
-[node name="Ally2" parent="." instance=ExtResource("4_4wfy7")]
-position = Vector2(320, 64)
-
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("2_5x1xw")
 
-[node name="CapturableBase" parent="." instance=ExtResource("6_nphai")]
-position = Vector2(602, 320)
+[node name="CapturableBaseManager" type="Node2D" parent="."]
+script = ExtResource("4_1fhux")
+
+[node name="CapturableBase" parent="CapturableBaseManager" instance=ExtResource("6_nphai")]
+position = Vector2(640, 160)
+
+[node name="CapturableBase2" parent="CapturableBaseManager" instance=ExtResource("6_nphai")]
+position = Vector2(1056, 208)
+
+[node name="CapturableBase3" parent="CapturableBaseManager" instance=ExtResource("6_nphai")]
+position = Vector2(1528, 184)
+
+[node name="AllyMapAI" type="Node2D" parent="."]
+script = ExtResource("5_v3uy3")
+
+[node name="Ally" parent="AllyMapAI" instance=ExtResource("4_4wfy7")]
+position = Vector2(80, 336)
+
+[node name="Ally2" parent="AllyMapAI" instance=ExtResource("4_4wfy7")]
+position = Vector2(320, 64)
+
+[node name="Team" parent="AllyMapAI" instance=ExtResource("8_wibdo")]
+team = 1
+
+[node name="EnemyMapAI" type="Node2D" parent="."]
+script = ExtResource("5_v3uy3")
+base_capture_start_order = 1
+
+[node name="Enemy" parent="EnemyMapAI" instance=ExtResource("3_eeaeo")]
+position = Vector2(2040, 128)
+rotation = 3.14159
+
+[node name="Enemy2" parent="EnemyMapAI" instance=ExtResource("3_eeaeo")]
+position = Vector2(1728, 408)
+rotation = 3.14159
+
+[node name="Enemy3" parent="EnemyMapAI" instance=ExtResource("3_eeaeo")]
+position = Vector2(1976, 376)
+rotation = 3.14159
+
+[node name="Team" parent="EnemyMapAI" instance=ExtResource("8_wibdo")]
+team = 2
