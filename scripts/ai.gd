@@ -54,7 +54,7 @@ func _physics_process(delta):
 				npc.rotation = rotate_toward(npc.global_rotation, angle_to_patrol_location, 2 * delta)
 				if angle_to_patrol_location == npc.rotation:
 					npc.velocity = Vector2(npc.speed, 0.0).rotated(angle_to_patrol_location)
-					npc.position += npc.velocity * delta
+					#npc.position += npc.velocity * delta
 					npc.move_and_slide()
 				if npc.has_reached_position(patrol_location):
 					patrol_location_reached = true
@@ -74,7 +74,7 @@ func _physics_process(delta):
 				npc.rotation = rotate_toward(npc.global_rotation, angle_to_next_base, 2 * delta)
 				if angle_to_next_base == npc.rotation:
 					npc.velocity = Vector2(npc.speed, 0.0).rotated(angle_to_next_base)
-					npc.position += npc.velocity * delta
+					#npc.position += npc.velocity * delta
 					npc.move_and_slide()
 				
 func initialize(npc: CharacterBody2D, weapon: Weapon, team: int):
