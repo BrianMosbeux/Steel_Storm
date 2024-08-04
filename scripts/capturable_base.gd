@@ -59,7 +59,7 @@ func get_team_with_majority():
 	elif player_unit_count > enemy_unit_count:
 		return Team.TeamName.PLAYER
 	else:
-		return Team.TeamName.NEUTRAL
+		return Team.TeamName.ENEMY
 		
 func set_new_team(new_team: int):
 	team.team = new_team

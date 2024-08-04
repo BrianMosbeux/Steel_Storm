@@ -17,9 +17,20 @@ var capturable_bases: Array = []
 
 func initialize(capturable_bases: Array):
 	self.capturable_bases = capturable_bases
-	var next_base = get_next_capturable_base()
-	assign_next_capturable_base(next_base)
+	for base in capturable_bases:
+		base.connect("base_captured", self.handle_base_captured)
+	check_for_next_capturable_base()
+
+
+func handle_base_captured(_new_team: int):
+	check_for_next_capturable_base()
 	
+	
+func check_for_next_capturable_base():
+	var next_base = get_next_capturable_base()
+	if next_base:
+		assign_next_capturable_base_to_units(next_base)
+
 func get_next_capturable_base():
 	var list_of_bases: Array
 	if base_capture_start_order == BaseCaptureStartOrder.FIRST:
@@ -32,7 +43,7 @@ func get_next_capturable_base():
 			return base.global_position
 	return null
 
-func assign_next_capturable_base(base_location: Vector2):
+func assign_next_capturable_base_to_units(base_location: Vector2):
 	if base_location == null and base_location == Vector2.ZERO:
 		return
 	for unit in get_children():

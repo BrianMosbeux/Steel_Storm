@@ -41,6 +41,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Team" parent="." instance=ExtResource("6_pyrhh")]
+team = 2
 
 [connection signal="weapon_out_of_ammo" from="Weapon" to="AI" method="_on_weapon_weapon_out_of_ammo"]
 [connection signal="body_entered" from="AI/DetectionZone" to="AI" method="_on_detection_zone_body_entered"]
