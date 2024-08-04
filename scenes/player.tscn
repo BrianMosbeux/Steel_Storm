@@ -25,3 +25,5 @@ shape = SubResource("RectangleShape2D_ynfwj")
 
 [node name="Team" parent="." instance=ExtResource("5_ebwkj")]
 team = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
