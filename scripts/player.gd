@@ -27,8 +27,7 @@ func _physics_process(delta):
 	calculate_direction()
 	velocity += acceleration * delta
 	
-	get_player_aim_input()
-	rotate_player_weapon(delta)
+	get_player_aim_input(delta)
 	move_and_slide()
 	
 func _unhandled_input(event):
@@ -45,14 +44,12 @@ func get_player_move_input():
 	if Input.is_action_pressed("brake"):
 		acceleration = transform.x * braking	
 
-func get_player_aim_input():
+func get_player_aim_input(delta):
 	aim_dir = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
-		
-func rotate_player_weapon(delta):
 	if aim_dir.length() > dead_zone:
 		var aim_angle: float = aim_dir.angle()
 		weapon.global_rotation = rotate_toward(weapon.global_rotation, aim_angle, 2 * delta)
-
+		
 func apply_friction():
 	if velocity.length() < 5:
 		velocity = Vector2.ZERO
