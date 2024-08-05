@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvmuaj6mm243h"]
+
+[ext_resource type="Script" path="res://scripts/map_ai.gd" id="1_81yls"]
+[ext_resource type="PackedScene" uid="uid://hcjwhwueve55" path="res://scenes/team.tscn" id="3_gkg4w"]
+
+[node name="MapAI" type="Node2D"]
+script = ExtResource("1_81yls")
+
+[node name="Team" parent="." instance=ExtResource("3_gkg4w")]
+team = 1

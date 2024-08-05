@@ -8,6 +8,7 @@ enum BaseCaptureStartOrder {
 
 
 @export var base_capture_start_order: BaseCaptureStartOrder
+@export var team_name: Team.TeamName = Team.TeamName.NEUTRAL
 
 
 var capturable_bases: Array = []
@@ -16,6 +17,7 @@ var capturable_bases: Array = []
 
 
 func initialize(capturable_bases: Array):
+	team.team = team_name
 	self.capturable_bases = capturable_bases
 	for base in capturable_bases:
 		base.connect("base_captured", self.handle_base_captured)
