@@ -8,3 +8,5 @@ script = ExtResource("1_81yls")
 
 [node name="Team" parent="." instance=ExtResource("3_gkg4w")]
 team = 1
+
+[node name="UnitContainer" type="Node2D" parent="."]

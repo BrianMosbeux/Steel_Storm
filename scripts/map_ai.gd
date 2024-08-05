@@ -12,12 +12,19 @@ enum BaseCaptureStartOrder {
 @export var Unit: PackedScene
 
 var capturable_bases: Array = []
+var respawn_points: Array = []
 
 @onready var team = $Team
+@onready var unit_container = $UnitContainer
 
 
-func initialize(capturable_bases: Array):
+func initialize(capturable_bases: Array, respawn_points: Array):
 	team.team = team_name
+	self.respawn_points = respawn_points
+	for point in respawn_points:
+		var unit_instance = Unit.instantiate()
+		unit_instance.global_position = point.global_position
+		unit_container.add_child(unit_instance)
 	self.capturable_bases = capturable_bases
 	for base in capturable_bases:
 		base.connect("base_captured", self.handle_base_captured)
@@ -48,9 +55,7 @@ func get_next_capturable_base():
 func assign_next_capturable_base_to_units(base_location: Vector2):
 	if base_location == null and base_location == Vector2.ZERO:
 		return
-	for unit in get_children():
-		if unit == team:
-			continue
+	for unit in unit_container.get_children():
 		var ai = unit.ai
 		ai.next_base = base_location
 		ai.current_state = AI.State.ADVANCE
