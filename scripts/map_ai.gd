@@ -9,7 +9,7 @@ enum BaseCaptureStartOrder {
 
 @export var base_capture_start_order: BaseCaptureStartOrder
 @export var team_name: Team.TeamName = Team.TeamName.NEUTRAL
-
+@export var Unit: PackedScene
 
 var capturable_bases: Array = []
 
