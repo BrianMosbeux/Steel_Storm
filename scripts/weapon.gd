@@ -8,7 +8,7 @@ signal weapon_out_of_ammo
 @export var BulletScene: PackedScene
 
 
-var max_ammo: int = 3
+var max_ammo: int = 5
 var current_ammo: int = max_ammo
 
 

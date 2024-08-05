@@ -81,6 +81,7 @@ func initialize(npc: CharacterBody2D, weapon: Weapon, team: int):
 	self.npc = npc
 	self.weapon = weapon	
 	self.team = team
+	weapon.connect("weapon_out_of_ammo", handle_reload)
 
 func _on_detection_zone_body_entered(body):
 	if body.has_method("get_team") and body.get_team() != team:
@@ -99,5 +100,5 @@ func _on_patrol_timer_timeout():
 	patrol_location = Vector2(random_x, random_y) + origin
 	patrol_location_reached = false
 
-func _on_weapon_weapon_out_of_ammo():
+func handle_reload():
 	weapon.start_reload()
