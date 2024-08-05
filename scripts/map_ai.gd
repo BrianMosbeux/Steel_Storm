@@ -12,6 +12,7 @@ enum BaseCaptureStartOrder {
 @export var Unit: PackedScene
 @export var max_units_alive: int = 4
 
+var target_base: CapturableBase = null 
 var capturable_bases: Array = []
 var respawn_points: Array = []
 var next_spawn_to_use: int = 0
@@ -39,6 +40,7 @@ func handle_base_captured(_new_team: int):
 func check_for_next_capturable_base():
 	var next_base = get_next_capturable_base()
 	if next_base:
+		target_base = next_base
 		assign_next_capturable_base_to_units(next_base)
 
 func get_next_capturable_base():
@@ -50,15 +52,19 @@ func get_next_capturable_base():
 	for i in list_of_bases:
 		var base: CapturableBase = capturable_bases[i]
 		if team.team != base.team.team:
-			return base.global_position
+			return base
 	return null
 
-func assign_next_capturable_base_to_units(base_location: Vector2):
-	if base_location == null and base_location == Vector2.ZERO:
-		return
+func assign_next_capturable_base_to_units(base: CapturableBase):
+	#if base_location == null and base_location == Vector2.ZERO:
+		#return
 	for unit in unit_container.get_children():
+		set_unit_ai_to_advance_to_next_base(unit)
+		
+func set_unit_ai_to_advance_to_next_base(unit):
+	if target_base:
 		var ai = unit.ai
-		ai.next_base = base_location
+		ai.next_base = target_base.global_position
 		ai.current_state = AI.State.ADVANCE
 	
 func spawn_unit(respawn_point: Marker2D):
@@ -66,6 +72,7 @@ func spawn_unit(respawn_point: Marker2D):
 	unit_instance.global_position = respawn_point.global_position
 	unit_container.add_child(unit_instance)
 	unit_instance.connect("died", handle_unit_death)
+	set_unit_ai_to_advance_to_next_base(unit_instance)
 
 func handle_unit_death():
 	if unit_container.get_children().size() < max_units_alive and respawn_timer.is_stopped():
