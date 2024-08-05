@@ -2,6 +2,9 @@ extends CharacterBody2D
 class_name NPC
 
 
+signal died
+
+
 @onready var health = $Health
 @onready var ai = $AI
 @onready var weapon = $Weapon
@@ -23,5 +26,6 @@ func get_team():
 func handle_hit():
 	health.health -= 20
 	if health.health <= 0:
+		died.emit()
 		queue_free()
 		$CollisionShape2D.set_deferred("disabled", true)

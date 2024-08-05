@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 
+signal died
+
 @onready var weapon = $Weapon
 @onready var health = $Health
 @onready var team = $Team
@@ -18,7 +20,7 @@ var acceleration: Vector2
 var aim_dir: Vector2
 var dead_zone: float = .9
 
-
+@onready var start_position = global_position
 
 func _physics_process(delta):
 	acceleration = Vector2.ZERO
@@ -73,6 +75,8 @@ func calculate_direction():
 func handle_hit():
 	health.health -= 20
 	if health.health <= 0:
+		global_position = start_position
+		health.health = 100
 		print("YOU DIED")
 
 func get_team():
