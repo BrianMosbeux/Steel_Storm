@@ -12,9 +12,6 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qjmy5")
 
-[node name="Player" parent="." instance=ExtResource("1_2efj0")]
-position = Vector2(256, 160)
-
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("2_5x1xw")
 
@@ -31,6 +28,7 @@ position = Vector2(1056, 208)
 position = Vector2(1528, 184)
 
 [node name="AllyMapAI" parent="." instance=ExtResource("6_kdbq6")]
+Player = ExtResource("1_2efj0")
 team_name = 1
 Unit = ExtResource("4_4wfy7")
 
@@ -70,3 +68,6 @@ rotation = 3.14159
 [node name="Marker2D4" type="Marker2D" parent="EnemyRespawnPoints"]
 position = Vector2(1986, 258)
 rotation = 3.14159
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true

@@ -7,6 +7,8 @@ signal died
 @onready var weapon = $Weapon
 @onready var health = $Health
 @onready var team = $Team
+@onready var camera_remote_transform_2d = $CameraRemoteTransform2D
+
 
 var wheel_base: int = 70
 var engine_power: int = 400
@@ -20,7 +22,6 @@ var acceleration: Vector2
 var aim_dir: Vector2
 var dead_zone: float = .9
 
-@onready var start_position = global_position
 
 func _physics_process(delta):
 	acceleration = Vector2.ZERO
@@ -74,10 +75,16 @@ func calculate_direction():
 		
 func handle_hit():
 	health.health -= 20
+	print(health.health)
 	if health.health <= 0:
-		global_position = start_position
-		health.health = 100
+		#global_position = start_position
+		#health.health = 100
+		died.emit()
 		print("YOU DIED")
+		queue_free()
 
 func get_team():
 	return team.team
+	
+func set_camera_transform(camera_path: NodePath):
+	camera_remote_transform_2d.remote_path = camera_path
