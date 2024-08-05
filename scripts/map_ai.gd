@@ -8,7 +8,7 @@ enum BaseCaptureStartOrder {
 
 
 @export var base_capture_start_order: BaseCaptureStartOrder
-@export var team_name: Team.TeamName = Team.TeamName.NEUTRAL
+@export var team_name: Team.TeamName
 @export var Unit: PackedScene
 @export var max_units_alive: int = 4
 
@@ -70,6 +70,7 @@ func set_unit_ai_to_advance_to_next_base(unit):
 func spawn_unit(respawn_point: Marker2D):
 	var unit_instance = Unit.instantiate()
 	unit_instance.global_position = respawn_point.global_position
+	unit_instance.global_rotation = respawn_point.global_rotation
 	unit_container.add_child(unit_instance)
 	unit_instance.connect("died", handle_unit_death)
 	set_unit_ai_to_advance_to_next_base(unit_instance)
