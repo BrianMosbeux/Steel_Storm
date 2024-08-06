@@ -2,6 +2,7 @@ extends Node2D
 class_name Weapon
 
 
+signal weapon_ammo_count_changed(new_ammo_count)
 signal weapon_out_of_ammo
 
 
@@ -9,7 +10,14 @@ signal weapon_out_of_ammo
 
 
 var max_ammo: int = 5
-var current_ammo: int = max_ammo
+var current_ammo: int = max_ammo:
+	set(new_ammo_count):
+		var actual_ammo = clamp(new_ammo_count, 0, max_ammo)
+		if current_ammo != actual_ammo:
+			current_ammo = actual_ammo
+			if current_ammo == 0:
+				weapon_out_of_ammo.emit()
+			weapon_ammo_count_changed.emit(current_ammo)
 
 
 @onready var end_of_gun = $EndOfGun
@@ -32,5 +40,3 @@ func shoot():
 		weapon_cooldown.start()
 		animation_player.play("muzzle_flash")
 		current_ammo -= 1
-		if current_ammo == 0:
-			weapon_out_of_ammo.emit()

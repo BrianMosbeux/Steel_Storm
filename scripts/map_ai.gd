@@ -23,6 +23,7 @@ var player_instance: CharacterBody2D
 @onready var unit_container = $UnitContainer
 @onready var respawn_timer = $RespawnTimer
 @onready var camera_2d = $"../Camera2D"
+@onready var hud = $"../HUD"
 
 
 func initialize(capturable_bases: Array, respawn_points: Array):
@@ -79,6 +80,7 @@ func spawn_unit(respawn_point: Marker2D):
 		add_child(player_instance)
 		player_instance.connect("died", handle_unit_death)
 		player_instance.set_camera_transform(camera_2d.get_path())
+		hud.set_player(player_instance)
 	else:
 		var unit_instance = Unit.instantiate()
 		unit_instance.global_position = respawn_point.global_position

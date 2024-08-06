@@ -3,6 +3,7 @@ class_name Player
 
 
 signal died
+signal player_health_changed(new_health)
 
 @onready var weapon = $Weapon
 @onready var health = $Health
@@ -75,7 +76,7 @@ func calculate_direction():
 		
 func handle_hit():
 	health.health -= 20
-	print(health.health)
+	player_health_changed.emit(health.health)
 	if health.health <= 0:
 		#global_position = start_position
 		#health.health = 100
