@@ -71,8 +71,11 @@ func _physics_process(delta):
 		State.ADVANCE:
 			var path = path_finding.get_new_path(global_position, next_base)
 			if path.size() > 1:
+				#var direction = npc.global_position.direction_to(path[1])
+				#npc.velocity = direction * npc.speed
+				#npc.move_and_slide()
 				var angle_to_path_1: float = (path[1] - npc.global_position).angle()
-				npc.rotation = rotate_toward(npc.global_rotation, angle_to_path_1, 2 * delta)
+				npc.rotation = rotate_toward(npc.rotation, angle_to_path_1, 2 * delta)
 				if angle_to_path_1 == npc.rotation:
 					npc.velocity = Vector2(npc.speed, 0.0).rotated(angle_to_path_1)
 					npc.move_and_slide()

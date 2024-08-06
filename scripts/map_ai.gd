@@ -17,7 +17,7 @@ var target_base: CapturableBase = null
 var capturable_bases: Array = []
 var respawn_points: Array = []
 var next_spawn_to_use: int = 0
-var player_instance: CharacterBody2D
+var player_instance: Player
 var path_finding: PathFinding
 
 @onready var team = $Team
@@ -47,7 +47,7 @@ func check_for_next_capturable_base():
 	var next_base = get_next_capturable_base()
 	if next_base:
 		target_base = next_base
-		assign_next_capturable_base_to_units(target_base)
+		assign_next_capturable_base_to_units(next_base)
 
 func get_next_capturable_base():
 	var list_of_bases: Array

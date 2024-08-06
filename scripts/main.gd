@@ -5,7 +5,7 @@ extends Node2D
 @onready var ally_map_ai = $AllyMapAI
 @onready var enemy_map_ai = $EnemyMapAI
 @onready var bullet_manager = $BulletManager
-@onready var player = $Player
+@onready var player: Player
 @onready var path_finding = $PathFinding
 @onready var tile_map = $TileMap
 

@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://e417i38tw8xv"]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_dbcdo"]
+[ext_resource type="Texture2D" uid="uid://2v36vgk88376" path="res://assets/sprites/tank_red/tankBody_red_outline.png" id="2_skvra"]
+[ext_resource type="PackedScene" uid="uid://b8bndbs0iyr2s" path="res://scenes/weapon.tscn" id="3_e8nf8"]
+[ext_resource type="PackedScene" uid="uid://bgq8mwc07yl6s" path="res://scenes/health.tscn" id="4_8hnmu"]
+[ext_resource type="PackedScene" uid="uid://b4yl30yst7kit" path="res://scenes/ai.tscn" id="5_xges7"]
+[ext_resource type="PackedScene" uid="uid://hcjwhwueve55" path="res://scenes/team.tscn" id="6_pyrhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynfwj"]
+size = Vector2(40, 42)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_dbcdo")
+
+[node name="TankBodySprite" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("2_skvra")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ynfwj")
+
+[node name="Weapon" parent="." instance=ExtResource("3_e8nf8")]
+
+[node name="Health" parent="." instance=ExtResource("4_8hnmu")]
+
+[node name="AI" parent="." instance=ExtResource("5_xges7")]
+
+[node name="Team" parent="." instance=ExtResource("6_pyrhh")]
+team = 2
