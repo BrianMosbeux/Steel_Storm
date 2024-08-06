@@ -196,33 +196,33 @@ Unit = ExtResource("3_eeaeo")
 [node name="AllyRespawnPoints" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="AllyRespawnPoints"]
-position = Vector2(386, 1218)
+position = Vector2(384, 1024)
 
 [node name="Marker2D2" type="Marker2D" parent="AllyRespawnPoints"]
-position = Vector2(322, 1282)
+position = Vector2(320, 1216)
 
 [node name="Marker2D3" type="Marker2D" parent="AllyRespawnPoints"]
-position = Vector2(322, 1346)
+position = Vector2(320, 1408)
 
 [node name="Marker2D4" type="Marker2D" parent="AllyRespawnPoints"]
-position = Vector2(386, 1410)
+position = Vector2(384, 1600)
 
 [node name="EnemyRespawnPoints" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="EnemyRespawnPoints"]
-position = Vector2(2240, 1216)
+position = Vector2(2240, 1088)
 rotation = 3.14159
 
 [node name="Marker2D2" type="Marker2D" parent="EnemyRespawnPoints"]
-position = Vector2(2304, 1280)
+position = Vector2(2304, 1216)
 rotation = 3.14159
 
 [node name="Marker2D3" type="Marker2D" parent="EnemyRespawnPoints"]
-position = Vector2(2304, 1344)
+position = Vector2(2304, 1408)
 rotation = 3.14159
 
 [node name="Marker2D4" type="Marker2D" parent="EnemyRespawnPoints"]
-position = Vector2(2240, 1408)
+position = Vector2(2240, 1600)
 rotation = 3.14159
 
 [node name="Camera2D" type="Camera2D" parent="."]

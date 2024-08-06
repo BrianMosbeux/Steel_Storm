@@ -15,11 +15,16 @@ var team_to_capture: int = Team.TeamName.NEUTRAL
 @onready var team = $Team
 @onready var sprite_2d = $Sprite2D
 @onready var capture_timer = $CaptureTimer
+@onready var collision_shape_2d = $CollisionShape2D
 
 
-func _process(delta):
-	get_team_with_majority()
-	
+func get_random_position_within_capture_radius():
+	var random_vec: Vector2 = (Vector2.RIGHT * randf()).rotated(randf_range(0, 2 * PI))
+	var random_position: Vector2 = collision_shape_2d.global_position + random_vec * collision_shape_2d.shape.radius
+	return random_position
+	#var vec = (Vector2.RIGHT * rand_range(0, 100)).rotate(rand_range(0, PI))
+
+
 func _on_body_entered(body):
 	if body.has_method("get_team"):
 		var body_team = body.get_team()

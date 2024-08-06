@@ -71,7 +71,7 @@ func assign_next_capturable_base_to_units(base: CapturableBase):
 func set_unit_ai_to_advance_to_next_base(unit):
 	if target_base:
 		var ai = unit.ai
-		ai.next_base = target_base.global_position
+		ai.next_base = target_base.get_random_position_within_capture_radius()
 		ai.current_state = AI.State.ADVANCE
 	
 func spawn_unit(respawn_point: Marker2D):
