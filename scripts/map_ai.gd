@@ -18,6 +18,7 @@ var capturable_bases: Array = []
 var respawn_points: Array = []
 var next_spawn_to_use: int = 0
 var player_instance: CharacterBody2D
+var path_finding: PathFinding
 
 @onready var team = $Team
 @onready var unit_container = $UnitContainer
@@ -26,8 +27,9 @@ var player_instance: CharacterBody2D
 @onready var hud = $"../HUD"
 
 
-func initialize(capturable_bases: Array, respawn_points: Array):
+func initialize(capturable_bases: Array, respawn_points: Array, path_finding: PathFinding):
 	team.team = team_name
+	self.path_finding = path_finding
 	self.respawn_points = respawn_points
 	for point in respawn_points:
 		spawn_unit(point)
@@ -45,7 +47,7 @@ func check_for_next_capturable_base():
 	var next_base = get_next_capturable_base()
 	if next_base:
 		target_base = next_base
-		assign_next_capturable_base_to_units(next_base)
+		assign_next_capturable_base_to_units(target_base)
 
 func get_next_capturable_base():
 	var list_of_bases: Array
@@ -87,6 +89,7 @@ func spawn_unit(respawn_point: Marker2D):
 		unit_instance.global_rotation = respawn_point.global_rotation
 		unit_container.add_child(unit_instance)
 		unit_instance.connect("died", handle_unit_death)
+		unit_instance.ai.path_finding = path_finding
 		set_unit_ai_to_advance_to_next_base(unit_instance)
 
 func handle_unit_death():

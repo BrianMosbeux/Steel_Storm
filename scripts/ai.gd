@@ -42,6 +42,8 @@ var patrol_location_reached: bool = false
 var npc_velocity: Vector2 = Vector2.ZERO
 #ADVANCE STATE
 var next_base: Vector2 = Vector2.ZERO
+#PATH FINDING
+var path_finding: PathFinding
 
 func _ready():
 	current_state = State.PATROL
@@ -67,15 +69,22 @@ func _physics_process(delta):
 				if abs(weapon.global_rotation - angle_to_target) < 0.1:
 					weapon.shoot()
 		State.ADVANCE:
-			if npc.has_reached_position(next_base):
-				current_state = State.PATROL
-			else:
-				var angle_to_next_base: float = (next_base - npc.global_position).angle()
-				npc.rotation = rotate_toward(npc.global_rotation, angle_to_next_base, 2 * delta)
-				if angle_to_next_base == npc.rotation:
-					npc.velocity = Vector2(npc.speed, 0.0).rotated(angle_to_next_base)
-					#npc.position += npc.velocity * delta
+			var path = path_finding.get_new_path(global_position, next_base)
+			if path.size() > 1:
+				var angle_to_path_1: float = (path[1] - npc.global_position).angle()
+				npc.rotation = rotate_toward(npc.global_rotation, angle_to_path_1, 2 * delta)
+				if angle_to_path_1 == npc.rotation:
+					npc.velocity = Vector2(npc.speed, 0.0).rotated(angle_to_path_1)
 					npc.move_and_slide()
+			else:
+				current_state = State.PATROL
+			#else:
+				#var angle_to_next_base: float = (next_base - npc.global_position).angle()
+				#npc.rotation = rotate_toward(npc.global_rotation, angle_to_next_base, 2 * delta)
+				#if angle_to_next_base == npc.rotation:
+					#npc.velocity = Vector2(npc.speed, 0.0).rotated(angle_to_next_base)
+					##npc.position += npc.velocity * delta
+					#npc.move_and_slide()
 				
 func initialize(npc: CharacterBody2D, weapon: Weapon, team: int):
 	self.npc = npc
