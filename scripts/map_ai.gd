@@ -65,7 +65,7 @@ func assign_next_capturable_base_to_units(base: CapturableBase):
 	#if base_location == null and base_location == Vector2.ZERO:
 		#return
 	for unit in unit_container.get_children():
-		if unit != Player:
+		if unit != player_instance:
 			set_unit_ai_to_advance_to_next_base(unit)
 		
 func set_unit_ai_to_advance_to_next_base(unit):
@@ -79,7 +79,7 @@ func spawn_unit(respawn_point: Marker2D):
 		player_instance = Player.instantiate()
 		player_instance.global_position = respawn_point.global_position
 		player_instance.global_rotation = respawn_point.global_rotation
-		add_child(player_instance)
+		unit_container.add_child(player_instance)
 		player_instance.connect("died", handle_unit_death)
 		player_instance.set_camera_transform(camera_2d.get_path())
 		hud.set_player(player_instance)
@@ -93,14 +93,14 @@ func spawn_unit(respawn_point: Marker2D):
 		set_unit_ai_to_advance_to_next_base(unit_instance)
 
 func handle_unit_death():
-	if unit_container.get_children().size() < max_units_alive and respawn_timer.is_stopped():
+	if respawn_timer.is_stopped() and unit_container.get_children().size() < max_units_alive:
 		respawn_timer.start() 
 
 func _on_respawn_timer_timeout():
 	var respawn_point = respawn_points[next_spawn_to_use]
 	spawn_unit(respawn_point)
-	if unit_container.get_children().size() < max_units_alive:
-		respawn_timer.start()
 	next_spawn_to_use += 1
 	if next_spawn_to_use == respawn_points.size():
 		next_spawn_to_use = 0
+	if unit_container.get_children().size() < max_units_alive:
+		respawn_timer.start()
