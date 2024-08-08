@@ -4,3 +4,6 @@
 
 [node name="PathFinding" type="Node2D"]
 script = ExtResource("1_8xved")
+should_display_grid = true
+
+[node name="Grid" type="Node2D" parent="."]
