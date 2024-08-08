@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/pathfinding.gd" id="11_64nit"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwfdd"]
+resource_name = "Ground"
 texture = ExtResource("9_hld7e")
 texture_region_size = Vector2i(64, 64)
 1:0/0 = 0
@@ -196,33 +197,33 @@ Unit = ExtResource("3_eeaeo")
 [node name="AllyRespawnPoints" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="AllyRespawnPoints"]
-position = Vector2(384, 1024)
+position = Vector2(352, 992)
 
 [node name="Marker2D2" type="Marker2D" parent="AllyRespawnPoints"]
-position = Vector2(320, 1216)
+position = Vector2(288, 1184)
 
 [node name="Marker2D3" type="Marker2D" parent="AllyRespawnPoints"]
-position = Vector2(320, 1408)
+position = Vector2(288, 1440)
 
 [node name="Marker2D4" type="Marker2D" parent="AllyRespawnPoints"]
-position = Vector2(384, 1600)
+position = Vector2(352, 1632)
 
 [node name="EnemyRespawnPoints" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="EnemyRespawnPoints"]
-position = Vector2(2240, 1088)
+position = Vector2(2272, 992)
 rotation = 3.14159
 
 [node name="Marker2D2" type="Marker2D" parent="EnemyRespawnPoints"]
-position = Vector2(2304, 1216)
+position = Vector2(2336, 1184)
 rotation = 3.14159
 
 [node name="Marker2D3" type="Marker2D" parent="EnemyRespawnPoints"]
-position = Vector2(2304, 1408)
+position = Vector2(2336, 1440)
 rotation = 3.14159
 
 [node name="Marker2D4" type="Marker2D" parent="EnemyRespawnPoints"]
-position = Vector2(2240, 1600)
+position = Vector2(2272, 1632)
 rotation = 3.14159
 
 [node name="Camera2D" type="Camera2D" parent="."]
