@@ -10,6 +10,8 @@ enum State {
 	ADVANCE
 }
 
+@export var draw_path_line: bool = false
+
 
 @onready var detection_zone = $DetectionZone
 @onready var patrol_timer = $PatrolTimer
@@ -48,6 +50,7 @@ var path_finding: PathFinding
 
 func _ready():
 	current_state = State.PATROL
+	path_line.visible = draw_path_line
 
 func _physics_process(delta):
 	path_line.global_rotation = 0
@@ -114,6 +117,8 @@ func initialize(npc: CharacterBody2D, weapon: Weapon, team: int):
 	weapon.connect("weapon_out_of_ammo", handle_reload)
 	
 func set_path_line(points: Array):
+	if not draw_path_line:
+		return
 	var local_points: Array = []
 	for point in points:
 		if point == points[0]:

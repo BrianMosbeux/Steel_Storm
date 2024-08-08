@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dyqmlfrgr5r0d" path="res://scenes/capturable_base.tscn" id="6_nphai"]
 [ext_resource type="Texture2D" uid="uid://dp6kou7shdj4w" path="res://assets/tile_sheets/terrainTiles_default.png" id="9_hld7e"]
 [ext_resource type="PackedScene" uid="uid://cmpvdm5t2grj2" path="res://scenes/hud.tscn" id="10_asviy"]
-[ext_resource type="Script" path="res://scripts/pathfinding.gd" id="11_64nit"]
+[ext_resource type="PackedScene" uid="uid://c0wbmskyrhqhd" path="res://scenes/path_finding.tscn" id="11_djdws"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwfdd"]
 resource_name = "Ground"
@@ -276,5 +276,4 @@ position_smoothing_enabled = true
 
 [node name="HUD" parent="." instance=ExtResource("10_asviy")]
 
-[node name="PathFinding" type="Node2D" parent="."]
-script = ExtResource("11_64nit")
+[node name="PathFinding" parent="." instance=ExtResource("11_djdws")]
