@@ -70,10 +70,11 @@ func _physics_process(delta):
 						#npc.velocity = Vector2(npc.speed, 0.0).rotated(angle_to_patrol_location)
 						##npc.position += npc.velocity * delta
 						#npc.move_and_slide()
-				if npc.has_reached_position(patrol_location):
+				else:
 					patrol_location_reached = true
 					npc.velocity = Vector2.ZERO
 					patrol_timer.start()
+					path_line.clear_points()
 		State.ENGAGE:
 			if target and weapon:
 				var angle_to_target = (target.global_position - npc.global_position).angle()
@@ -97,6 +98,7 @@ func _physics_process(delta):
 					#print(angle_to_path_1 - npc.global_rotation)
 			else:
 				current_state = State.PATROL
+				path_line.clear_points()
 			#else:
 				#var angle_to_next_base: float = (next_base - npc.global_position).angle()
 				#npc.rotation = rotate_toward(npc.global_rotation, angle_to_next_base, 2 * delta)
@@ -114,7 +116,10 @@ func initialize(npc: CharacterBody2D, weapon: Weapon, team: int):
 func set_path_line(points: Array):
 	var local_points: Array = []
 	for point in points:
-		local_points.append(point - global_position)
+		if point == points[0]:
+			local_points.append(Vector2.ZERO)
+		else:
+			local_points.append(point - global_position)
 	path_line.points = local_points
 	
 
