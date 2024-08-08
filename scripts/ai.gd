@@ -13,6 +13,7 @@ enum State {
 
 @onready var detection_zone = $DetectionZone
 @onready var patrol_timer = $PatrolTimer
+@onready var path_line = $PathLine
 
 
 var current_state: State = -1:
@@ -49,6 +50,7 @@ func _ready():
 	current_state = State.PATROL
 
 func _physics_process(delta):
+	path_line.global_rotation = 0
 	match current_state:
 		State.PATROL:
 			if not patrol_location_reached:
@@ -59,6 +61,7 @@ func _physics_process(delta):
 					npc.global_rotation = current_angle
 					npc.velocity = Vector2(npc.speed, 0.0).rotated(current_angle)
 					npc.move_and_slide()
+					set_path_line(path)
 					
 					#
 					#var angle_to_patrol_location: float = (path[1] - npc.global_position).angle()
@@ -88,6 +91,7 @@ func _physics_process(delta):
 				npc.global_rotation = current_angle
 				npc.velocity = Vector2(npc.speed, 0.0).rotated(current_angle)
 				npc.move_and_slide()
+				set_path_line(path)
 				#else:
 					#print("angle not found")
 					#print(angle_to_path_1 - npc.global_rotation)
@@ -106,6 +110,13 @@ func initialize(npc: CharacterBody2D, weapon: Weapon, team: int):
 	self.weapon = weapon	
 	self.team = team
 	weapon.connect("weapon_out_of_ammo", handle_reload)
+	
+func set_path_line(points: Array):
+	var local_points: Array = []
+	for point in points:
+		local_points.append(point - global_position)
+	path_line.points = local_points
+	
 
 func _on_detection_zone_body_entered(body):
 	if body.has_method("get_team") and body.get_team() != team:

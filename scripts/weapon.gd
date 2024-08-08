@@ -24,7 +24,10 @@ var current_ammo: int = max_ammo:
 @onready var gun_direction = $GunDirection
 @onready var weapon_cooldown = $WeaponCooldown
 @onready var animation_player = $AnimationPlayer
+@onready var muzzle_flash = $MuzzleFlash
 
+func _ready():
+	muzzle_flash.hide()
 
 func start_reload():
 	animation_player.play("reload")

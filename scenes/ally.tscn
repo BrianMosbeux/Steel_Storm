@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynfwj"]
 size = Vector2(42, 42)
 
-[node name="Ally" type="CharacterBody2D" groups=["enemies"]]
+[node name="Ally" type="CharacterBody2D" groups=["obstacles"]]
 script = ExtResource("1_r3om5")
 
 [node name="TankBodySprite" type="Sprite2D" parent="."]

@@ -25,6 +25,7 @@ func update_navigation_map():
 	create_astar_grid_2d(tile_map)
 	var region_size = astar_grid.region.size
 	var obstacles = get_tree().get_nodes_in_group("obstacles")
+	#print(obstacles)
 	#for x in region_size.x:
 		#for y in region_size.y:
 			#var tile_position = Vector2i(x, y)

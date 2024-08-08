@@ -9,6 +9,7 @@ signal player_health_changed(new_health)
 @onready var health = $Health
 @onready var team = $Team
 @onready var camera_remote_transform_2d = $CameraRemoteTransform2D
+@onready var collision_shape_2d = $CollisionShape2D
 
 
 var wheel_base: int = 70
