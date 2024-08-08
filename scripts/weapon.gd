@@ -21,7 +21,6 @@ var current_ammo: int = max_ammo:
 
 
 @onready var end_of_gun = $EndOfGun
-@onready var gun_direction = $GunDirection
 @onready var weapon_cooldown = $WeaponCooldown
 @onready var animation_player = $AnimationPlayer
 @onready var muzzle_flash = $MuzzleFlash
@@ -38,7 +37,7 @@ func _stop_reload():
 func shoot():
 	if weapon_cooldown.is_stopped() and current_ammo != 0:
 		var bullet_instance = BulletScene.instantiate()
-		var bullet_direction = (gun_direction.global_position - end_of_gun.global_position).normalized()
+		var bullet_direction = (end_of_gun.global_position - global_position).normalized()
 		GlobalSignals.bullet_fired.emit(bullet_instance, end_of_gun.global_position, bullet_direction)
 		weapon_cooldown.start()
 		animation_player.play("muzzle_flash")
