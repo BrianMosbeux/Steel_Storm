@@ -9,6 +9,8 @@ signal died
 @onready var ai = $AI
 @onready var weapon = $Weapon
 @onready var team = $Team
+@onready var collision_shape_2d = $CollisionShape2D
+
 
 
 var speed = 100

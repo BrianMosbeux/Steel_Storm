@@ -52,12 +52,21 @@ func _physics_process(delta):
 	match current_state:
 		State.PATROL:
 			if not patrol_location_reached:
-				var angle_to_patrol_location: float = (patrol_location - npc.global_position).angle()
-				npc.rotation = rotate_toward(npc.global_rotation, angle_to_patrol_location, 2 * delta)
-				if angle_to_patrol_location == npc.rotation:
-					npc.velocity = Vector2(npc.speed, 0.0).rotated(angle_to_patrol_location)
-					#npc.position += npc.velocity * delta
+				var path = path_finding.get_new_path(global_position, patrol_location)
+				if path.size() > 1:
+					var angle_to_path_1: float = (path[1] - npc.global_position).angle()
+					var current_angle: float = rotate_toward(npc.global_rotation, angle_to_path_1, 2 * delta)
+					npc.global_rotation = current_angle
+					npc.velocity = Vector2(npc.speed, 0.0).rotated(current_angle)
 					npc.move_and_slide()
+					
+					#
+					#var angle_to_patrol_location: float = (path[1] - npc.global_position).angle()
+					#npc.global_rotation = rotate_toward(npc.global_rotation, angle_to_patrol_location, 2 * delta)
+					#if angle_to_patrol_location == npc.global_rotation:
+						#npc.velocity = Vector2(npc.speed, 0.0).rotated(angle_to_patrol_location)
+						##npc.position += npc.velocity * delta
+						#npc.move_and_slide()
 				if npc.has_reached_position(patrol_location):
 					patrol_location_reached = true
 					npc.velocity = Vector2.ZERO
@@ -75,10 +84,13 @@ func _physics_process(delta):
 				#npc.velocity = direction * npc.speed
 				#npc.move_and_slide()
 				var angle_to_path_1: float = (path[1] - npc.global_position).angle()
-				npc.rotation = rotate_toward(npc.rotation, angle_to_path_1, 2 * delta)
-				if angle_to_path_1 == npc.rotation:
-					npc.velocity = Vector2(npc.speed, 0.0).rotated(angle_to_path_1)
-					npc.move_and_slide()
+				var current_angle: float = rotate_toward(npc.global_rotation, angle_to_path_1, 2 * delta)
+				npc.global_rotation = current_angle
+				npc.velocity = Vector2(npc.speed, 0.0).rotated(current_angle)
+				npc.move_and_slide()
+				#else:
+					#print("angle not found")
+					#print(angle_to_path_1 - npc.global_rotation)
 			else:
 				current_state = State.PATROL
 			#else:
