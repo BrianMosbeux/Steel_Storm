@@ -12,11 +12,14 @@ var health_tween: Tween
 func set_player(player: Player):
 	self.player = player
 	set_new_health_bar_value(player.health.health)
-	set_new_current_ammo_label_value(player.weapon.current_ammo)
-	set_new_max_ammo_label_value(player.weapon.max_ammo)
 	player.connect("player_health_changed", set_new_health_bar_value)
-	player.weapon.connect("weapon_ammo_count_changed", set_new_current_ammo_label_value)
+	set_weapon(player.weapon_manager.get_current_weapon())
 
+func set_weapon(weapon: Weapon):
+	set_new_current_ammo_label_value(weapon.current_ammo)
+	set_new_max_ammo_label_value(weapon.max_ammo)
+	weapon.connect("weapon_ammo_count_changed", set_new_current_ammo_label_value)
+	
 func set_new_health_bar_value(new_health: int):
 	var origina_color: Color = Color("#ff5652")
 	var transition_color: Color = Color("#ff8952")

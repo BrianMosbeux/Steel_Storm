@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2c1bxj4fpft"]
+
+[ext_resource type="PackedScene" uid="uid://b8bndbs0iyr2s" path="res://scenes/weapon.tscn" id="1_hiwmp"]
+
+[node name="Barrel_1" instance=ExtResource("1_hiwmp")]
