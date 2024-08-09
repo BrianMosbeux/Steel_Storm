@@ -2,4 +2,4 @@
 
 [ext_resource type="PackedScene" uid="uid://b8bndbs0iyr2s" path="res://scenes/weapon.tscn" id="1_hiwmp"]
 
-[node name="Barrel_1" instance=ExtResource("1_hiwmp")]
+[node name="Barrel1" instance=ExtResource("1_hiwmp")]

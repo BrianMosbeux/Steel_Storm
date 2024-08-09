@@ -14,11 +14,13 @@ func set_player(player: Player):
 	set_new_health_bar_value(player.health.health)
 	player.connect("player_health_changed", set_new_health_bar_value)
 	set_weapon(player.weapon_manager.get_current_weapon())
-
+	player.weapon_manager.connect("weapon_changed", set_weapon)
+	
 func set_weapon(weapon: Weapon):
 	set_new_current_ammo_label_value(weapon.current_ammo)
 	set_new_max_ammo_label_value(weapon.max_ammo)
-	weapon.connect("weapon_ammo_count_changed", set_new_current_ammo_label_value)
+	if not weapon.is_connected("weapon_ammo_count_changed", set_new_current_ammo_label_value):
+		weapon.connect("weapon_ammo_count_changed", set_new_current_ammo_label_value)
 	
 func set_new_health_bar_value(new_health: int):
 	var origina_color: Color = Color("#ff5652")

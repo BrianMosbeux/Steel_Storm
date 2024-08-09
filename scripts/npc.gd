@@ -18,6 +18,7 @@ var speed = 100
 
 func _ready():
 	ai.initialize(self, weapon, team.team)
+	weapon.initialize(team.team)
 	
 func has_reached_position(location:Vector2):
 	return global_position.distance_to(location) < 5

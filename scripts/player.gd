@@ -24,6 +24,9 @@ var steer_angle: float
 var acceleration: Vector2
 
 
+func _ready():
+	weapon_manager.initialize(team.team)
+	
 func _physics_process(delta):
 	acceleration = Vector2.ZERO
 	get_player_move_input()

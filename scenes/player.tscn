@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccbtfuru36i8s"]
+[gd_scene load_steps=9 format=3 uid="uid://ccbtfuru36i8s"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_xffjq"]
 [ext_resource type="Texture2D" uid="uid://bdqvfi72v3sia" path="res://assets/sprites/tank_blue/tankBody_blue_outline.png" id="2_bdwpo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://hcjwhwueve55" path="res://scenes/team.tscn" id="5_ebwkj"]
 [ext_resource type="Script" path="res://scripts/weapon_manager.gd" id="5_w5q4q"]
 [ext_resource type="PackedScene" uid="uid://b2c1bxj4fpft" path="res://scenes/barrel_1.tscn" id="6_awy73"]
+[ext_resource type="PackedScene" uid="uid://bmufhjb5f0dxr" path="res://scenes/barrel_2.tscn" id="7_y2lyx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynfwj"]
 size = Vector2(42, 42)
@@ -30,4 +31,7 @@ team = 1
 [node name="WeaponManager" type="Node2D" parent="."]
 script = ExtResource("5_w5q4q")
 
-[node name="Barrel_1" parent="WeaponManager" instance=ExtResource("6_awy73")]
+[node name="Barrel1" parent="WeaponManager" instance=ExtResource("6_awy73")]
+
+[node name="Barrel2" parent="WeaponManager" instance=ExtResource("7_y2lyx")]
+visible = false
